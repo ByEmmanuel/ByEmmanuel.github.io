@@ -1,0 +1,324 @@
+/*  NOTA    TODO LO QUE ESTA COLOCADO Y EMPIEZEN POR PUNTO, SON LOS NOMBRES 
+DE LOS CONTENEDORES DE HTML  */
+
+
+/* *{
+    border: 2px solid red;
+} */
+
+
+/* Estilos para la lista horizontal */
+.nav-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que la sección fija esté delante de otros elementos */
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #db2626; /* Añade un fondo para resaltar el contenedor */
+    /* background: url(); aqui pongo una imagen de fondo */ 
+    padding: 10px; /* Agrega un espacio alrededor del contenido del contenedor */
+    margin: 10px 10px 10px 10px;
+    border: none;
+    border-radius: 10px;
+}
+body {
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+/* Esto es de la lista superior derecha de la pagina */
+.nav-item {
+    list-style: none;
+    display: flex;
+    
+}
+.list-item {
+    text-decoration: black;
+    margin-right: 25px; /* Espaciado entre elementos de la lista */
+    font-size: 20px;
+    padding: 10px;
+    
+    background-color: wheat;
+    border: none;
+    border-radius: 400px 100px 10px 400px;
+    
+}
+
+/* Este es el contenedor de la informacion */
+.Presentacion-div{
+    position:relative;
+    top: 100px;
+    width: 300px; /* Ajusta el ancho del div según sea necesario */
+    height: 150px;
+    background-color: #f0f0f0;
+    /* padding: 0px 40px 250px 0px; */
+
+    padding: 50px 80px 250px 10px;
+    margin: 60px 50px 160px 20px;
+}
+/* Este es el icono donde esta mi nombre "Emma"  */
+.name2 {
+    font-size: 1.5em; /* Tamaño de fuente ajustado */
+    margin-left: 70px; /* Ajusta el margen derecho para controlar la posición */
+    padding: 5px 10px 5px 10px;
+    background-color: aqua; 
+}
+/* Este Div es el de Hola, Sobre mi */
+.Div-Iam{
+    width: 150px; /* Ajusta el ancho del div según sea necesario */
+    height: 25px; /* Ajusta la altura del div según sea necesario */
+    border-radius: 100px 30px 200px 3px ; /* izquierda, derecha. arriba, derecha abajo, izquierda abajo */
+    background-color: #3498db;
+    padding: 15px;
+    
+}
+.Boton-Top{
+    border-color: transparent;
+    padding: 5px 10px 5px 10px;
+    background-color: #f0f0f0;
+}
+
+/* Esto es del nombre Completo */
+.name-h1{
+    position: relative;
+    display: inline;    
+    
+    font-size: 25px;
+    top: 10px;
+    left: 20px;
+}
+/* Este es el que dice programador */
+.vocation{
+    font-size: 20px;
+    position: relative;
+    left: 20px;
+}
+/* Botones del contenedor */
+.Boton-Email, .Boton-Telefono{
+    position: relative;
+    
+    padding: 10px 10px 10px 10px;
+    margin: 5px;
+    left: 20px;
+    cursor: pointer;
+    border: transparent;
+}
+/* Iconos de la lista de contacto */
+.Lista-Iconos{
+    display: flex;
+    
+    position: relative;
+    
+}
+.Iconos-Div1:hover{
+    cursor: pointer;
+    transform: scale(1.4); /* Ajusta el valor según sea necesario para el aumento deseado */
+}
+.Iconos-Div1{
+    margin-right: 30px; /* Espaciado entre elementos de la lista */
+    font-size: 20px;
+    display: flex;
+    cursor: pointer;    
+    background-color: #db2626; /* Añade un fondo para resaltar el contenedor */
+    /* background: url(); aqui pongo una imagen de fondo */ 
+    padding: 10px; /* Agrega un espacio alrededor del contenido del contenedor */
+    
+    
+    transition: transform 0.3s ease; /* Agregamos una transición suave */
+}
+/* Contenedor de imagen mia  */
+.contenedor-imagen {
+    position:absolute;
+    display: inline;
+    left: 600px;
+    top: 150px;
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+}
+/* Cortar la imagen */
+.imagen-cortada {
+    clip: rect(100px, 100px, 200px, 100px); /* Valores: top, right, bottom, left */
+    width: 100%;
+    height: 100%;
+}
+
+
+/* About Me Seccion */
+
+.About-Me-Seccion{
+    position: relative;
+    top: 10px;
+    padding: 130px 150px 0px 270px;
+    
+    background-color: #3498db;
+}
+.contenedor-imagen-aboutme{
+    position:absolute;
+    display: flex;
+    left: 100px;
+    top: 250px;
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+}
+.Imagen-About-Me{
+    clip: rect(100px, 100px, 200px, 100px); /* Valores: top, right, bottom, left */
+    width: 100%;
+    height: 100%;
+}
+section {
+    transition: background-color 0.5s; /* Transición para cambiar el color de fondo */
+}
+
+.About-Me{
+    display:block;
+    position:relative;
+    top: 10px;
+    left: 150px;
+    margin: 50px;
+    
+}
+.Tecnologias-AboutMe-Div{
+    padding: 10px 100px 30px 10px;
+    background-color: black;
+    margin: 10px 150px 10px 10px;
+    
+}
+.Tecnologias-AboutMe{
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    background-color: aliceblue;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+
+
+/*  Aqui Empieza la seccion de Skills */
+
+
+
+.Contenedor-Principal-Skills{
+    
+    background-color: #be6767;
+    
+    padding-bottom: 150px;
+    margin: 0%;
+    padding-top: 100px;
+}
+.Texto-Arriba-Barras{
+    position: relative;
+    display: inline-flex;
+    padding: 10px 10px 1px 300px;
+    top: 10px;
+    
+    
+}
+.Contenedor-BarrasDeCarga{
+    position: relative;
+    display: inline-block;
+    
+    padding: 1px 1px 3px 100px;
+    background-color: rgba(215, 196, 16, 0.869);
+    margin: 1px 1px 1px 500px;
+    
+}
+.barra-de-carga {
+    
+    position: relative;
+    display: inline-block;
+    width: 400px;
+    height: 15px;
+    
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    
+    
+}
+.porcentaje {
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-size: 18px;
+}
+
+.progreso {
+    position: absolute;
+    display: inline;
+    
+    height: 100%;
+    background-color: #3498db; /* Color de la barra de carga */
+    transition: width 0.3s ease-in-out;
+}
+
+.Contenedor-Circulos-Skills{
+    position:absolute;
+    display: inline;
+    left: 60px;
+    top: 1500px;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    background-color: aqua;
+}
+
+.progressbar-text{
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    padding: 0; 
+    margin: 0; 
+    transform: translate(-50%, -50%); 
+    color: rgb(85, 85, 85); 
+    font-size: 25px;
+}
+
+.pr-skill-name {
+    position: relative;
+    margin-right: 10px;
+    
+    margin-top: 5px; /* Espacio adicional ajustado para la legibilidad */
+    left: 45px;
+    
+}
+.Circulo1,.Circulo2,.Circulo3,.Circulo4{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    padding: 20px;
+    left: 20px;
+    
+}
+    
+
+.Lista-Skills {
+    margin: 5px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0%;
+    text-decoration: black;
+    font-size: 20px;
+    padding: 1px;
+    background-color: wheat;
+    border: none;
+    list-style: none;
+}
+
+/* Aqui Empieza la seccion de portafolio */
+
+
+
+.Contenedor-Principal-Portfolio{
+    padding: 300px;
+    background-color: #3498db;
+}
