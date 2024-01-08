@@ -3,43 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista con Círculos</title>
+    <title>Ventana Emergente</title>
     <style>
-        /* Estilos para mayor claridad en el ejemplo */
-        ul {
-            list-style: none;
+        body {
+            margin: 0;
             padding: 0;
-            display: flex;
-            flex-wrap: wrap;
+            font-family: Arial, sans-serif;
         }
 
-        .circulo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #3498db;
-            margin: 10px; /* Espacio entre los círculos */
-            display: flex;
-            align-items: center;
+        .ventana-emergente {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
             justify-content: center;
-            color: #fff;
-            font-weight: bold;
-            font-size: 18px;
+            align-items: center;
+        }
+
+        .contenido-ventana {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+    <a href="#" onclick="mostrarVentana()">Haz clic aquí</a>
 
-    <ul>
-        <li>
-            <div class="circulo">1</div>
-            <div class="circulo">2</div>
-        </li>
-        <li>
-            <div class="circulo">3</div>
-            <div class="circulo">4</div>
-        </li>
-    </ul>
+    <div class="ventana-emergente" id="ventanaEmergente">
+        <div class="contenido-ventana">
+            <p>Contenido de la ventana emergente</p>
+            <button onclick="cerrarVentana()">Cerrar</button>
+        </div>
+    </div>
 
+    <script>
+        function mostrarVentana() {
+            document.getElementById('ventanaEmergente').style.display = 'flex';
+        }
+
+        function cerrarVentana() {
+            document.getElementById('ventanaEmergente').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
