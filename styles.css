@@ -7,6 +7,7 @@ DE LOS CONTENEDORES DE HTML  */
 } */
 
 
+
 /* Estilos para la lista horizontal */
 .nav-container {
     top: 0;
@@ -715,6 +716,80 @@ section {
     }
 }
 
+/* Esta seccion es la parte de experiencia */
+
+.contenedor-experiencia{
+    position: relative;
+    display: inline-block;
+    top: 0%;
+    bottom: 1em;
+    size: 100%;
+    background-color: #1c1919;
+    top: 100%;
+    width: 100%; /* Ajusta el ancho del div según sea necesario */
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+
+.separador-contenedor{
+    color: white;
+    position: relative;
+    display: flex;
+}
+
+.educacion{
+    position: relative;
+    display: inline-block;
+    left: 10%;
+    margin: 2em;
+    padding: 2em;
+}
+
+.work-experience{
+    position: relative;
+    display: inline-block;
+    margin: 2em;
+    left: 25%;
+    padding: 2em;
+}
+
+.contenedor-edu-1{
+    position: relative;
+    display: inline-block;
+    font-size: medium;
+    
+    margin: 1em 0em 1em 0em;
+    padding: 1em;
+    
+    background-color: #343A41;
+    border-radius: 10px;
+    width: 300px; /* Ancho fijo de los contenedores */
+
+}
+
+.contenedor-we-1{
+    position: relative;
+    display: inline-block;
+    font-size: medium;
+    margin: 1em 0em 1em 0em;
+
+    
+    margin: 1em 0em 1em 0em;
+    padding: 1em;
+    background-color: #343A41;
+    border-radius: 10px;
+    width: 300px; /* Ancho fijo de los contenedores */
+
+
+}
+
+.años-edu{
+    color: aqua;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
 
 /* Esta seccion es de Responsive wen */
 
