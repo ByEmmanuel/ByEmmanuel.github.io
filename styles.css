@@ -353,7 +353,7 @@ section {
 .Contenedor-Principal-Portfolio{
     position: relative;
     display: inline-block;    
-
+    
     
 }
 
@@ -362,8 +362,11 @@ section {
     display: inline-block;
     top: 0%;
     bottom: 1em;
-
+    size: 100%;
     background-color: #3498db;
+    top: 100%;
+    width: 100%; /* Ajusta el ancho del div según sea necesario */
+    height: 100%;
 
 }
 .Nombre-portafolio{
@@ -596,7 +599,7 @@ section {
 }
 
 
-.Imagen-portafolio1:hover .ventana-emergente,.Imagen-portafolio2:hover .ventana-emergente,.Imagen-portafolio3:hover .ventana-emergente3 ,.Imagen-portafolio4:hover .ventana-emergente4 {
+.Imagen-portafolio1:hover .ventana-emergente,.Imagen-portafolio2:hover .ventana-emergente2,.Imagen-portafolio3:hover .ventana-emergente3 ,.Imagen-portafolio4:hover .ventana-emergente4 {
     
     display: flex;
     opacity: 0.7; /* Hacer visible */
@@ -604,7 +607,7 @@ section {
     transition: color 0.3s; /* Transición para suavizar el cambio de color */
     
 }
-.Imagen-portafolio1.show .ventana-emergente,.Imagen-portafolio2.show .ventana-emergente,.Imagen-portafolio3.show .ventana-emergente3 ,.Imagen-portafolio4.show .ventana-emergente4 {
+.Imagen-portafolio1.show .ventana-emergente,.Imagen-portafolio2.show .ventana-emergente2,.Imagen-portafolio3.show .ventana-emergente3 ,.Imagen-portafolio4.show .ventana-emergente4 {
     opacity: 0.8;
     transition-delay: 0s; /* Elimina el retraso después de la primera vez */
 }
@@ -630,6 +633,43 @@ section {
 }
 
 /* Pop Ups Proyectos */
+.ventana-emergente-Encriptador {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-ventana-Encriptador {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+.ventana-emergente-Conversor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-ventana-Conversor {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
 
 .ventana-emergente-AppleBank {
     display: none;
@@ -644,6 +684,24 @@ section {
 }
 
 .contenido-ventana-AppleBank {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.ventana-emergente-Hotel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-ventana-Hotel {
     background: #fff;
     padding: 20px;
     border-radius: 10px;

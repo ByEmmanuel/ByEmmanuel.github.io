@@ -3,18 +3,36 @@ function scrollToSection(sectionId) {
 
     // Desplaza la página hacia la sección con animación
     targetSection.scrollIntoView({ behavior: 'smooth' });
+    
 }
 
-document.querySelector('.Imagen-portafolio1').addEventListener('mouseenter', function() {
-    this.classList.add('show');
-});
 
-function mostrarVentana() {
-    document.getElementById('ventanaEmergente').style.display = 'flex';
-    console.log("Boton mostrar ventana");
+
+function mostrarVentana(numero) {
+    switch (numero){
+        case 1:
+            document.getElementById("PopUp1").style.display = 'flex';
+            break;
+        case 2:
+            document.getElementById("PopUp2").style.display = 'flex';
+            break;
+        case 3:
+            document.getElementById("PopUp3").style.display = 'flex';
+            break;
+        case 4:
+            document.getElementById("PopUp4").style.display = 'flex';
+            break;
+            default:
+                break;
+    }
+    console.log(numero);
 }
 
-function cerrarVentana() {
-    document.getElementById('ventanaEmergente').style.display = 'none';
-    console.log("Boton cerrar ventana");
+function cerrarVentana(numero) {
+    document.getElementById('PopUp1').style.display = 'none';
+    document.getElementById('PopUp2').style.display = 'none';
+    document.getElementById('PopUp3').style.display = 'none';
+    document.getElementById('PopUp4').style.display = 'none';
+    
+    console.log(numero);
 }

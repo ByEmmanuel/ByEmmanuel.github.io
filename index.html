@@ -199,7 +199,7 @@
                                     <i class="fa fa-search"></i>
                                     <h5 class="titulo">Encriptador De Texto</h5>
                                     
-                                    <span class="sub-titulo">Mira este proyecto</span>
+                                    <span class="sub-titulo" onclick="mostrarVentana(1)">Mira este proyecto</span>
                                     <a data-fancybox href="#" class="enlace"></a>
                                     
                                 </div>
@@ -208,11 +208,11 @@
                         <figure class="Imagen-portafolio2">
                             <img src="Imagenes/Conversor.png" alt="Conversor" width="300%" height="100%">
                             <figcaption class="contenedor">
-                                <div class="ventana-emergente">
+                                <div class="ventana-emergente2">
                                     <i class="fa fa-search"></i>
                                     <h5 class="titulo">Conversor De Monedas</h5>
                                     
-                                    <span class="sub-titulo">Mira este proyecto</span>
+                                    <span class="sub-titulo" onclick="mostrarVentana(2)">Mira este proyecto</span>
                                     <a data-fancybox href="#" class="enlace"></a>
                                     
                                 </div>
@@ -224,43 +224,69 @@
                         
                         <p class="p-1">Mi Mejor Proyecto :)</p>
                             <figure class="Imagen-portafolio3">
-                                <img src="Imagenes/AppBanco.png" alt="" width="300%" >
+                                <img src="Imagenes/AppBanco.png" alt="AppleBank" width="300%" >
                                 <figcaption class="contenedor">
                                     <div class="ventana-emergente3">
                                         <i class="fa fa-search"></i>
                                         <h5 class="titulo">Apple Bank</h5>
                                         
-                                        <span class="sub-titulo" onclick="mostrarVentana()">Mira este proyecto</span>
+                                        <span class="sub-titulo" onclick="mostrarVentana(3)">Mira este proyecto</span>
                                         <!-- Este Enlace No funciona correctamente, !!! Solucionar al momento ¡¡¡ -->
                                         <a data-fancybox href="" class="enlace" onclick="mostrarVentana()">aqui</a>
                                         
                                     </div>
                                 </figcaption>
                             </figure>
-                            <div class="ventana-emergente-AppleBank" id="ventanaEmergente">
-                                <div class="contenido-ventana-AppleBank">
-                                    <p>Contenido de la ventana emergente</p>
+                            <figure class="Imagen-portafolio4">
+                                <img src="Imagenes/Hotel.png" alt="" width="150%" >
+                                <figcaption class="contenedor">
+                                    <div class="ventana-emergente4">
+                                        <i class="fa fa-search"></i>
+                                        <h5 class="titulo">Hotel Alura</h5>
+                                        
+                                        <span class="sub-titulo" onclick="mostrarVentana(4)">Mira este proyecto</span>
+                                        <a data-fancybox href="#" class="enlace"></a>
+                                        
+                                    </div>
+                                </figcaption>
+                            </figure>
+                            <!-- PopUp encriptador -->
+                            <div class="ventana-emergente-Encriptador" id="PopUp1">
+                                <div class="contenido-ventana-Encriptador">
+                                    <p>Contenido de la ventana emergente Encriptador</p>
                                     <button onclick="cerrarVentana()">Cerrar</button>
                                 </div>
                             </div>
-                        <figure class="Imagen-portafolio4">
-                            <img src="Imagenes/Hotel.png" alt="" width="150%" >
-                            <figcaption class="contenedor">
-                                <div class="ventana-emergente4">
-                                    <i class="fa fa-search"></i>
-                                    <h5 class="titulo">Hotel Alura</h5>
-                                    
-                                    <span class="sub-titulo">Mira este proyecto</span>
-                                    <a data-fancybox href="#" class="enlace"></a>
-                                    
+                            <!-- PopUp Conversor  -->
+                            <div class="ventana-emergente-Conversor" id="PopUp2">
+                                <div class="contenido-ventana-Conversor">
+                                    <p>Contenido de la ventana emergente Conversor de monedas</p>
+                                    <button onclick="cerrarVentana()">Cerrar</button>
                                 </div>
-                            </figcaption>
-                        </figure>
+                            </div>
+                            <!-- PopUp AppleBank -->
+                            <div class="ventana-emergente-AppleBank" id="PopUp3">
+                                <div class="contenido-ventana-AppleBank">
+                                    <p>Contenido de la ventana emergente Apple Bank</p>
+                                    <button onclick="cerrarVentana()">Cerrar</button>
+                                </div>
+                            </div>
+                            <!-- PopUp Hotel -->
+                            <div class="ventana-emergente-Hotel" id="PopUp4">
+                                <div class="contenido-ventana-Hotel">
+                                    <p>Contenido de la ventana emergente Hotel</p>
+                                    <button onclick="cerrarVentana()">Cerrar</button>
+                                </div>
+                            </div>
                     </div>
                 </div>
                 
             </div>
         </section>
+        <section>
+            
+        </section>
     </body>
     <script src="https://kit.fontawesome.com/27e4026a46.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </html>
