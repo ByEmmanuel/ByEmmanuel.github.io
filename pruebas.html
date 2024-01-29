@@ -3,61 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ventana Emergente</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .ventana-emergente {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contenido-ventana {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        a {
-            color: #007BFF;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Carrusel de Logos con Iconos</title>
 </head>
 <body>
-    <a href="#" onclick="mostrarVentana()">Haz clic aquí</a>
 
-    <div class="ventana-emergente" id="ventanaEmergente">
-        <div class="contenido-ventana">
-            <p>Contenido de la ventana emergente</p>
-            <button onclick="cerrarVentana()">Cerrar</button>
+<div class="carousel-container">
+    <div class="carousel">
+        <div class="logo-slide">
+            <div class="logo"><img src="html_logo.png" alt="HTML"></div>
+            <div class="icons">
+                <i class="fab fa-html5"></i>
+                <i class="fab fa-css3-alt"></i>
+                <i class="fab fa-js"></i>
+                <i class="fab fa-java"></i>
+            </div>
         </div>
+        <!-- Repite este bloque para cada diapositiva -->
     </div>
+</div>
 
-    <script>
-        function mostrarVentana() {
-            document.getElementById('ventanaEmergente').style.display = 'flex';
-        }
 
-        function cerrarVentana() {
-            document.getElementById('ventanaEmergente').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 80%; /* Ajusta el ancho según tus preferencias */
+    margin: auto;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.logo {
+    min-width: 100%; /* Cada logo ocupa el 100% del ancho del contenedor */
+    box-sizing: border-box;
+    padding: 10px; /* Ajusta el espacio entre logos según tus preferencias */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector('.carousel');
+    let currentIndex = 0;
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % 2;
+        updateCarousel();
+    }, 3000);
+
+    function updateCarousel() {
+        const transformValue = -currentIndex * 1000 + '%';
+        carousel.style.transform = 'translateX(' + transformValue + ')';
+    }
+});
+
+</script>
