@@ -1,0 +1,153 @@
+
+/* Esta seccion es de Responsive wen */
+
+@media screen and (min-width: 390px) and (max-width: 844px) {
+
+
+
+    .nav-container {
+        top: 0;
+        left: 0;
+        width: 90%;
+        z-index: 50%; /* Asegura que la sección fija esté delante de otros elementos */
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #db2626; /* Añade un fondo para resaltar el contenedor */
+        /* background: url(); aqui pongo una imagen de fondo */ 
+        padding: 10px; /* Agrega un espacio alrededor del contenido del contenedor */
+        margin: 10px 10px 10px 10px;
+        border: none;
+        border-radius: 10px;
+        }
+    .nav-item {
+        list-style: none;
+        display: flex;
+        position: relative;
+        right: 60%;
+        padding: 3%;
+    }
+    .list-item {
+        text-decoration: black;
+    margin-right: 1%; /* Espaciado entre elementos de la lista */
+    font-size: 100%;
+    padding: 5%;
+    
+    background-color: wheat;
+    border: none;
+    border-radius: 400px 100px 10px 400px;
+    }
+    .Presentacion-div {}
+    .name2 {}
+    .Div-Iam {}
+    .Boton-Top {}
+    .name-h1 {}
+    .vocation {}
+    .Boton-Telefono {}
+    .Lista-Iconos {}
+    .Iconos-Div1 {}
+    .contenedor-imagen {}
+    .imagen-cortada {}
+    .About-Me-Seccion {
+        position: relative;
+        top: 10px;
+        padding: 130px 150px 0px 270px;
+        
+        background-color: #3498db;
+    }
+    .contenedor-imagen-aboutme {}
+    .Imagen-About-Me {}
+    .About-Me {
+        display:block;
+        position:relative;
+        top: 10px;
+        left: 150px;
+        margin: 50px;}
+    .Tecnologias-AboutMe-Div {}
+    .Tecnologias-AboutMe {}
+    .Contenedor-Principal-Skills {}
+    .Texto-Arriba-Barras {}
+    .Contenedor-BarrasDeCarga {}
+    .barra-de-carga {}
+    .porcentaje {}
+    .progreso {}
+    .Contenedor-Circulos-Skills {}
+    .progressbar-text {}
+    .pr-skill-name {}
+    .Circulo4 {}
+    .Lista-Skills {}
+    .Contenedor-Principal-Portfolio {}
+    .Contenedor-Portafolio {}
+    .Nombre-portafolio {}
+    .Div-Imagenes-Superior1 {}
+    .Imagen-portafolio1 {}
+    .Imagen-portafolio2 {}
+    .Div-Imagenes-Superior2 {}
+    .Imagen-portafolio3 {}
+    .Imagen-portafolio4 {}
+    .ventana-emergente {}
+    .ventana-emergente2 {}
+    .ventana-emergente3 {}
+    .ventana-emergente4 {}
+    .p-1 {}
+    .Mi-MejorProyecto {}
+    .contenedor {}
+    .mensaje-animado {}
+    .sub-titulo {}
+    .ventana-emergente-Encriptador {}
+    .contenido-ventana-Encriptador {}
+    .ventana-emergente-Conversor {}
+    .contenido-ventana-Conversor {}
+    .ventana-emergente-AppleBank {}
+    .contenido-ventana-AppleBank {}
+    .ventana-emergente-Hotel {}
+    .contenido-ventana-Hotel {}
+    .contenedor-experiencia { 
+        position: relative;
+        display: inline-block;
+        top: 0%;
+        bottom: 1em;
+        size: 50%;
+        background-color: #1c1919;
+        top: 50%;
+        width: 100%; /* Ajusta el ancho del div según sea necesario */
+        height: 50%;
+        font-family: "Open Sans", sans-serif;}
+    .separador-contenedor {
+        color: white;
+        
+        display: flex;
+    }
+    .educacion {}
+    .work-experience {}
+    .contenedor-edu-1 {}
+    .contenedor-we-1 {}
+    .footer {}
+
+}
+
+/* Estilos para pantallas medianas (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+
+    section {
+        padding: 10px;
+    }
+    #nav-container{
+        padding: 10px;
+    }
+}
+
+/* Estilos para pantallas grandes (min-width: 1025px) */
+@media (min-width: 1025px) {
+    body {
+        font-size: 18px;
+    }
+
+    section {
+        padding: 30px;
+    }
+}

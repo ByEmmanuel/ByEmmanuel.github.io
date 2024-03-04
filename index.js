@@ -3,6 +3,12 @@ function scrollToSection(sectionId) {
 
     // Desplaza la página hacia la sección con animación
     targetSection.scrollIntoView({ behavior: 'smooth' });
+    targetSection.scrollTo({sectionId})
+    
+    scroll({
+        top: offsetTop,
+        behavior: "smooth"
+      });
     
 }
 
