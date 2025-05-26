@@ -1,0 +1,615 @@
+.header-container {
+    min-height: 100vh; /* Cambio a min-height para mejor adaptación */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    position: relative;
+    padding-top: 100px;
+    overflow: hidden;
+    padding: 2rem 1rem; /* Añadir padding para evitar que el contenido toque los bordes */
+  }
+  
+  .header-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  
+  .header-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    z-index: 1;
+    gap: 2rem; /* Añadir espacio entre elementos */
+  }
+  
+  .header-text {
+    width: 60%;
+  }
+  
+  .glitch-effect {
+    font-size: 4rem;
+    font-weight: 700;
+    position: relative;
+    color: white;
+    letter-spacing: 5px;
+    margin: 0;
+    animation: glitch 5s infinite;
+    word-break: break-word; /* Evita que el texto se salga del contenedor */
+  }
+  
+  .glitch-effect span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegurar que el span ocupe todo el ancho */
+  }
+  
+  .glitch-effect span:first-child {
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    transform: translate(-4px, -4px);
+    opacity: 0.8;
+  }
+  
+  .glitch-effect span:last-child {
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    transform: translate(4px, 4px);
+    opacity: 0.8;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: #61dafb;
+    letter-spacing: 2px;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Estilos de los botones CTA */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 0.5rem; /* Añadir margen para cuando los botones se envuelven */
+    white-space: nowrap; /* Evita que el texto se rompa */
+    display: inline-block;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  .btn-primary {
+    background-color: #61dafb;
+    color: #0f2027;
+  }
+    
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid #61dafb;
+  }
+  
+  /* Media queries para diferentes tamaños de pantalla */
+  @media (max-width: 992px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .header-text, 
+    .header-graphic {
+      width: 100%;
+    }
+    
+    .glitch-effect {
+      font-size: 3rem;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+        gap: 0.8rem;
+      }
+      
+      .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+      }  
+      
+  }
+  
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 1rem;
+    }
+    
+    .glitch-effect {
+      font-size: 2.5rem;
+      letter-spacing: 3px;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+    }
+    
+    .description {
+      font-size: 1rem;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+        gap: 0.8rem;
+      }
+      
+      .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.95rem;
+      }
+  }
+  
+  @media (max-width: 480px) {
+    .glitch-effect {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    
+    .description {
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        margin-bottom: 0.8rem;
+      }
+  }
+  
+
+/* Sección de código */
+.header-graphic {
+    width: 45%;
+    position: relative;
+    perspective: 1000px;
+    z-index: 1;
+  }
+  
+  .code-snippet code {
+    counter-reset: line; /* Necesario para iniciar el contador de líneas */
+    position: relative;
+    display: block;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    color: #e0e0e0;
+    line-height: 1.6;
+    font-size: 14px;
+    text-align: left;
+    white-space: pre;
+    display: block;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.2);
+    counter-reset: line;
+  }
+
+
+  .code-snippet {
+    background: rgba(15, 15, 25, 0.85);
+    border-radius: 12px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 
+      0 20px 50px rgba(0, 0, 0, 0.5),
+      0 0 15px rgba(97, 218, 251, 0.3),
+      inset 0 0 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(97, 218, 251, 0.2);
+    transform-style: preserve-3d;
+    transform: rotateX(2deg) rotateY(-2deg);
+    transition: all 0.5s ease;
+    backdrop-filter: blur(5px);
+  }
+
+  .code-snippet:hover {
+    transform: rotateX(0) rotateY(0);
+    box-shadow: 
+      0 25px 60px rgba(0, 0, 0, 0.6),
+      0 0 20px rgba(97, 218, 251, 0.4),
+      inset 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Efecto de escáner */
+.code-snippet::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, #ff6b6b, #61dafb, #a5ff6b);
+    border-radius: 12px 12px 0 0;
+    z-index: 1;
+    box-shadow: 0 0 15px rgba(97, 218, 251, 0.7);
+  }
+
+  /* Barra de título del editor */
+.code-snippet::before {
+    content: "● ● ●  Passion.java";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: rgba(20, 20, 30, 1);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Menlo', 'Monaco', monospace;
+    font-size: 12px;
+    padding-top: 8px;
+    padding-left: 70px;
+    border-radius: 12px 12px 0 0;
+    z-index: 3;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  /* Línea de escáner animada */
+.code-snippet::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(97, 218, 251, 0.6);
+  opacity: 0.5;
+  animation: scanLine 2s linear infinite;
+  z-index: 2;
+  box-shadow: 0 0 8px rgba(97, 218, 251, 0.7);
+}
+  
+  /* Efecto de holograma */
+.header-graphic::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(ellipse at center, rgba(97, 218, 251, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: -1;
+}  
+  
+  /* Botones de ventana */
+  .code-snippet::after {
+    content: "● ● ●";
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #6e6e6e;
+  }
+  
+  .code-snippet pre {
+    margin: 0;
+    width: 100%;
+    overflow-x: auto;
+    padding-top: 40px; /* Espacio para la barra de título */
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(97, 218, 251, 0.5) rgba(20, 20, 30, 0.3);
+  }
+
+  .code-snippet pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .code-snippet pre::-webkit-scrollbar-thumb {
+    background: rgba(97, 218, 251, 0.5);
+    border-radius: 4px;
+  }  
+
+.code-snippet pre::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.3);
+    border-radius: 4px;
+  }
+  
+  /* Numeración de líneas */
+.code-snippet code > span {
+    display: block;
+    position: relative;
+  }
+
+.code-snippet code > span::before {
+    counter-increment: line;
+    content: counter(line);
+    position: absolute;
+    left: -20px;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: right;
+    width: 15px;
+  }
+
+  /* Cursor parpadeante */
+.code-snippet code::after {
+    content: "|";
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    color: #61dafb;
+    animation: blink 1s step-end infinite;
+  }
+  
+  /* Destacar elementos específicos del código */
+  /* Colores para la sintaxis */
+.language-java .keyword {
+    color: #ff79c6;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 121, 198, 0.3);
+  }
+
+
+.language-java .string {
+    color: #f1fa8c;
+    text-shadow: 0 0 5px rgba(241, 250, 140, 0.3);
+  }
+  
+  .language-java .comment {
+    color: #6272a4;
+    font-style: italic;
+  }
+  
+  /* Clases y nombres de métodos */
+  .language-java .method {
+    color: #50fa7b;
+    text-shadow: 0 0 5px rgba(80, 250, 123, 0.3);
+  }
+  
+  /* Números */
+  .language-java .number {
+    color: #bd93f9;
+    text-shadow: 0 0 5px rgba(189, 147, 249, 0.3);
+  }
+  
+  /* Constantes y objetos */
+  .language-java .constant {
+    color: #ffb86c;
+    text-shadow: 0 0 5px rgba(255, 184, 108, 0.3);
+  }
+  
+  /* Barra de navegación */
+  .header-nav {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  
+  .header-nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 3rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .header-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #61dafb;
+    transition: width 0.3s;
+  }
+  
+  .header-nav a:hover::after {
+    width: 100%;
+  }
+  
+  .mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 20px;
+    position: relative;
+  }
+  
+  .wheel {
+    width: 6px;
+    height: 10px;
+    background: white;
+    border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: wheel 2s infinite;
+  }
+  
+  .arrow-scroll {
+    color: white;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-top: 10px;
+  }
+  
+  @keyframes wheel {
+    0% {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-50%) translateY(15px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+  
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    14% {
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.05em -0.025em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    15% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    50% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    99% {
+      text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    100% {
+      text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+  }
+  
+/* Media queries para diferentes tamaños de pantalla */
+@media (max-width: 992px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .header-text, 
+    .header-graphic {
+      width: 100%;
+    }
+    
+    .glitch-effect {
+      font-size: 3rem;
+    }
+    
+    .cta-buttons {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .header-container {
+      padding: 1rem;
+    }
+  
+    .glitch-effect {
+      font-size: 2.5rem;
+      letter-spacing: 3px;
+    }
+  
+    .subtitle {
+      font-size: 1.2rem;
+    }
+  
+    .description {
+      font-size: 1rem;
+    }
+  
+    .cta-buttons {
+      flex-direction: column; /* Los botones uno debajo del otro */
+      align-items: center;     /* Centra horizontalmente */
+      gap: 0.8rem;
+    }
+  
+    .btn {
+      width: 100%;              /* Ocupa todo el ancho disponible */
+      max-width: 300px;         /* No excede este tamaño */
+      font-size: 1rem;
+      padding: 0.8rem 1rem;
+      text-align: center;
+    }
+  }
+  
+  
+  @media (max-width: 480px) {
+    .glitch-effect {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    
+    .description {
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+      }
+    
+      .btn {
+        width: 90%;
+        max-width: 100%;
+      }
+  }
