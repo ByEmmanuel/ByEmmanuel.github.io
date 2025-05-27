@@ -72,7 +72,18 @@ const Documentation = () => {
             downloadUrl: '/docs/security-guide.pdf',
             readUrl: '/docs/security',
             icon: 'fas fa-shield-alt'
-        }
+        },
+        {
+            id: 7,
+            title: 'API RESTful Documentation',
+            description: 'Guía completa de endpoints, parámetros y respuestas de la API.',
+            category: 'api',
+            tags: ['REST', 'Endpoints', 'JSON'],
+            lastUpdated: '15/05/2022',
+            downloadUrl: '/docs/api-documentation.pdf',
+            readUrl: '/docs/api',
+            icon: 'fas fa-server'
+        },
     ];
 
     // Filtrar documentos por categoría y término de búsqueda
@@ -93,7 +104,7 @@ const Documentation = () => {
         <section id="documentation" className="documentation-section">
             <div className="documentation-container">
                 <div className="section-title">
-                    <h2>Documentación</h2>
+                    <h2>Documentaciones</h2>
                     <div className="title-underline"></div>
                     <p className="section-subtitle">Recursos técnicos y guías para todos mis proyectos</p>
                 </div>

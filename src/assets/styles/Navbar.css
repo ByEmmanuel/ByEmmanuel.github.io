@@ -20,7 +20,14 @@
   font-weight: bold;
   color: #61dafb;
   letter-spacing: 1px;
+  /* Otros estilos que ya tengas para .logo */
 }
+
+.nav-icon {
+  display: none;
+  margin-right: 8px;
+}
+
   
 /* Estilos para los enlaces de navegación */
 .nav-links {
@@ -61,25 +68,88 @@
   }
 
 
-/* Botón de hamburguesa */
+/* Botón de hamburguesa - Versión mejorada */
 .hamburger {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    cursor: pointer;
-    z-index: 1001;
-  }
-  
-  .hamburger span {
-    display: block;
-    height: 3px;
-    width: 100%;
-    background-color: #61dafb;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.hamburger:hover {
+  background-color: rgba(97, 218, 251, 0.15);
+  box-shadow: 0 0 10px rgba(97, 218, 251, 0.2);
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #61dafb, #3a7bd5);
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto hover para las líneas */
+.hamburger:hover span {
+  width: 90%;
+}
+
+.hamburger:hover span:nth-child(1) {
+  width: 60%;
+}
+
+.hamburger:hover span:nth-child(3) {
+  width: 75%;
+}
+
+/* Animación cuando está activo */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+  width: 100%;
+  background: linear-gradient(90deg, #3a7bd5, #61dafb);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(15px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -6px);
+  width: 100%;
+  background: linear-gradient(90deg, #61dafb, #3a7bd5);
+}
+
+/* Añadir un efecto de pulsación */
+.hamburger:active {
+  transform: scale(0.95);
+}
+
+/* Texto del botón hamburguesa */
+.hamburger-text {
+  position: absolute;
+  right: -45px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 600;
+  color: #61dafb;
+  background: none;
+  height: auto;
+  width: auto;
+  letter-spacing: 0.5px;
+}
 
   /* Ajuste para evitar que el header se superponga con el navbar */
 /* Añadir esto al CSS y asegurarse de que header-container tenga padding-top */
@@ -111,9 +181,24 @@
     }
     
     .nav-links.active {
+      display: inline-block;
       right: 0;
     }
-    
+    .nav-links.active li a,
+    .nav-links.active li .nav-icon {
+      display: flex;
+      align-items: center;
+    }
+    .nav-links.active li {
+      margin: 15px 0;
+    }
+
+    .nav-links.active li a:hover .nav-icon i,
+  .nav-links.active li a:active .nav-icon i {
+    color: #61dafb;
+    transform: scale(1.2);
+  }
+
     /* Animación del botón hamburguesa */
     .hamburger.active span:nth-child(1) {
       transform: translateY(9px) rotate(45deg);

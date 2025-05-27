@@ -1,7 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../assets/styles/Header.css';
 
 const Header = () => {
+    // En Header.jsx
+    const handleDocumentationClick = (e) => {
+        e.preventDefault(); // Prevenir comportamiento por defecto
+        console.log("Botón de documentación clickeado");
+        
+        const documentationSection = document.getElementById('documentation');
+        console.log("Elemento encontrado:", documentationSection);
+        
+        if (documentationSection) {
+            documentationSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            console.error("Elemento #documentation no encontrado en el DOM");
+        }
+    };
+
     return (
         <header className="header-container">
             <div className="header-content">
@@ -16,7 +32,7 @@ const Header = () => {
                     
                     <div className="cta-buttons">
                         <a href="#projects" className="btn btn-primary">Ver Proyectos</a>
-                        <a href="#docs" className="btn btn-primary">Documentaciones</a>
+                        <Link to="/documentation" className="btn btn-secondary">Documentaciones</Link>
                         <a href="#contact" className="btn btn-secondary">Contáctame</a>
                     </div>
                 </div>

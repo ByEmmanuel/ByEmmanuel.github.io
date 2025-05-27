@@ -103,11 +103,21 @@
     font-size: 1.1rem;
   }
   
-  .contact-text a, .contact-text p {
+   .contact-text p {
     color: #666;
     text-decoration: none;
     transition: color 0.3s ease;
   }
+  /* Mejora para correos electrónicos largos */
+.contact-text a {
+  word-break: break-word; /* Permite romper palabras largas */
+  font-size: 0.9rem; /* Reducir ligeramente el tamaño de fuente */
+  display: inline-block; /* Asegurar que ocupe todo el ancho disponible */
+  max-width: 100%; /* Limitar el ancho al contenedor padre */
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
   
   .contact-text a:hover {
     color: #61dafb;
@@ -398,6 +408,9 @@
       width: 35px;
       height: 35px;
       font-size: 1rem;
+    }
+    .contact-text a {
+      font-size: 0.8rem; /* Reducir aún más en móviles */
     }
   }
   
