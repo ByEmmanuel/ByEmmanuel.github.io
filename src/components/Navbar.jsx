@@ -25,10 +25,11 @@ function Navbar() {
       <ul className={`nav-links ${isActive ? 'active' : ''}`}>
         <li><a href="#github.com/Byemmanuel" onClick={() => setIsActive(false)}>GitHub</a></li>
         <li><a href="#about" onClick={() => setIsActive(false)}>Sobre Mí</a></li>
-        <li><a href="#skills" onClick={() => setIsActive(false)}>Habilidades</a></li>
         <li><a href="#projects" onClick={() => setIsActive(false)}>Proyectos</a></li>
+        <li><a href="#skills" onClick={() => setIsActive(false)}>Habilidades</a></li>
         <li><a href="#blog" onClick={() => setIsActive(false)}>Blog Personal</a></li>
         <li><a href="#contact" onClick={() => setIsActive(false)}>Contacto</a></li>
+        <li><a href="#docs" onClick={() => setIsActive(false)}>Documentaciones</a></li>
       </ul>
     </nav>
   );

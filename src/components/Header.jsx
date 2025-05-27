@@ -16,6 +16,7 @@ const Header = () => {
                     
                     <div className="cta-buttons">
                         <a href="#projects" className="btn btn-primary">Ver Proyectos</a>
+                        <a href="#docs" className="btn btn-primary">Documentaciones</a>
                         <a href="#contact" className="btn btn-secondary">Contáctame</a>
                     </div>
                 </div>
