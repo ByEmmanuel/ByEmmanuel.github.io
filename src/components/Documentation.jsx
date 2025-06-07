@@ -15,7 +15,7 @@ const Documentation = () => {
             tags: ['Diseño', 'Analisís de datos', 'Graficas'],
             lastUpdated: '29/05/2025',
             downloadUrl: '/docs/system-architecture.pdf',
-            readUrl: '/SaaS',
+            readUrl: '/#/SaaS',
             icon: 'fas fa-sitemap'
         },
         {
