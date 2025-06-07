@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import About from './components/About';
@@ -46,18 +46,20 @@ const SaaS_Sprout = () => (
     <main>
       <MainPage/>
     </main>
+    {/* Aquí puedes agregar más secciones específicas de SaaS */}
+    <Footer/>
       {/* <FooterSaaS /> */}
   </>
 );
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/documentation" element={<DocPage />} />
         <Route path="/SaaS" element={<SaaS_Sprout />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
