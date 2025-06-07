@@ -9,6 +9,17 @@ const Documentation = () => {
     const documentationItems = [
         {
             id: 1,
+            title: 'Sprout Insights',
+            description: 'Documentación completa del proyecto Sprout Insights, incluyendo arquitectura, API y guías de usuario.',
+            category: 'architecture',
+            tags: ['Diseño', 'Analisís de datos', 'Graficas'],
+            lastUpdated: '29/05/2025',
+            downloadUrl: '/docs/system-architecture.pdf',
+            readUrl: '/SaaS',
+            icon: 'fas fa-sitemap'
+        },
+        {
+            id: 2,
             title: 'API RESTful Documentation',
             description: 'Guía completa de endpoints, parámetros y respuestas de la API.',
             category: 'api',
@@ -19,7 +30,7 @@ const Documentation = () => {
             icon: 'fas fa-server'
         },
         {
-            id: 2,
+            id: 3,
             title: 'Guía de Instalación',
             description: 'Instrucciones paso a paso para instalar y configurar el proyecto.',
             category: 'guide',
@@ -30,7 +41,7 @@ const Documentation = () => {
             icon: 'fas fa-download'
         },
         {
-            id: 3,
+            id: 4,
             title: 'Arquitectura del Sistema',
             description: 'Documentación detallada sobre la arquitectura y componentes del sistema.',
             category: 'architecture',
@@ -41,7 +52,7 @@ const Documentation = () => {
             icon: 'fas fa-sitemap'
         },
         {
-            id: 4,
+            id: 5,
             title: 'Tutorial: Primeros Pasos',
             description: 'Guía para principiantes con ejemplos prácticos para comenzar.',
             category: 'tutorial',
@@ -52,7 +63,7 @@ const Documentation = () => {
             icon: 'fas fa-graduation-cap'
         },
         {
-            id: 5,
+            id: 6,
             title: 'Referencia de Base de Datos',
             description: 'Esquemas, relaciones y modelos de datos utilizados en el proyecto.',
             category: 'database',
@@ -63,7 +74,7 @@ const Documentation = () => {
             icon: 'fas fa-database'
         },
         {
-            id: 6,
+            id: 7,
             title: 'Guía de Seguridad',
             description: 'Prácticas recomendadas y configuraciones de seguridad para el sistema.',
             category: 'security',
@@ -74,7 +85,7 @@ const Documentation = () => {
             icon: 'fas fa-shield-alt'
         },
         {
-            id: 7,
+            id: 8,
             title: 'API RESTful Documentation',
             description: 'Guía completa de endpoints, parámetros y respuestas de la API.',
             category: 'api',
