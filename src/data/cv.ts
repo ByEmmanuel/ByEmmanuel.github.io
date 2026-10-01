@@ -219,10 +219,13 @@ const projectsSrc: ProjectSrc[] = [
     },
     highlights: [
       {
-        es: "Backend en FastAPI que procesa los modelos estadísticos y expone una API REST",
-        en: "FastAPI backend that runs the statistical models and exposes a REST API",
+        es: "1,000 simulaciones Monte Carlo con cadenas de Markov por alumno, con intervalo de confianza del 95 % del promedio final",
+        en: "1,000 Monte Carlo simulations with Markov chains per student, with a 95% confidence interval for the final GPA",
       },
-      { es: "Frontend en React (Vite) servido detrás de NGINX", en: "React (Vite) frontend served behind NGINX" },
+      {
+        es: "API REST en FastAPI y frontend en React (Vite) detrás de NGINX, con kardex por alumno y distribuciones normal y binomial",
+        en: "FastAPI REST API and React (Vite) frontend behind NGINX, with per-student transcripts and normal and binomial distributions",
+      },
       {
         es: "PostgreSQL que se inicializa sola con el esquema y los datos precargados",
         en: "Self-initializing PostgreSQL with the schema and preloaded data",
@@ -234,6 +237,14 @@ const projectsSrc: ProjectSrc[] = [
     ],
     stack: ["Python", "FastAPI", "SciPy", "React", "PostgreSQL", "Docker", "NGINX"],
     links: [{ label: code, href: "https://github.com/ByEmmanuel/Proyecto_DB" }],
+    images: [
+      {
+        file: "1.webp",
+        alt: { es: "Simulación Monte Carlo + cadenas de Markov del promedio final", en: "Monte Carlo + Markov chain simulation of the final GPA" },
+      },
+      { file: "2.webp", alt: { es: "Distribución normal y binomial de calificaciones", en: "Normal and binomial grade distributions" } },
+      { file: "3.webp", alt: { es: "Kardex del alumno con su trayectoria curricular", en: "Student transcript with curriculum progress" } },
+    ],
   },
   {
     slug: "scvt",
@@ -333,10 +344,18 @@ const projectsSrc: ProjectSrc[] = [
         en: "OAuth 2.0 authentication with the Google Classroom and Google Calendar APIs",
       },
       { es: "Evita duplicados y maneja zonas horarias", en: "Avoids duplicates and handles time zones" },
-      { es: "Dashboard web en Flask para revisar las tareas sincronizadas", en: "Flask web dashboard to review synced assignments" },
+      {
+        es: "Tablero web (Flask + React) por días con tareas atrasadas, recordatorios, alertas y repetición; corre como servicio de systemd",
+        en: "Day-by-day web board (Flask + React) with overdue tasks, reminders, alerts and recurrence; runs as a systemd service",
+      },
     ],
-    stack: ["Python", "Flask", "Google APIs", "OAuth 2.0", "SQLite"],
+    stack: ["Python", "Flask", "React", "Google APIs", "OAuth 2.0", "SQLite"],
     links: [{ label: code, href: "https://github.com/ByEmmanuel/Auto_Scheduler" }],
+    images: [
+      { file: "1.webp", alt: { es: "Resumen del día al abrir el tablero", en: "Daily summary when opening the board" } },
+      { file: "2.webp", alt: { es: "Tablero de tareas por día", en: "Day-by-day task board" } },
+      { file: "3.webp", alt: { es: "Creación de una tarea con alertas y repetición", en: "Creating a task with alerts and recurrence" } },
+    ],
   },
   {
     slug: "app-banco",
