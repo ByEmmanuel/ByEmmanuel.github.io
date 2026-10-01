@@ -7,10 +7,10 @@ import { ICE } from "@/lib/presets"
 
 function Section({ id, title, kicker, children }: { id: string; title: string; kicker: string; children: ReactNode }) {
   return (
-    <section id={id} className="cv-section mx-auto w-full max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6 md:py-24">
+    <section id={id} className="cv-section mx-auto w-full max-w-6xl scroll-mt-16 px-4 py-12 sm:px-6 sm:py-16 md:scroll-mt-20 md:py-24">
       <p className="font-mono text-xs uppercase tracking-[0.3em] text-[var(--glow)]">{kicker}</p>
       <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
-      <div className="mt-10">{children}</div>
+      <div className="mt-8 sm:mt-10">{children}</div>
     </section>
   )
 }

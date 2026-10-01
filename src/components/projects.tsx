@@ -27,14 +27,18 @@ function Gallery({ project, ui, onOpen }: { project: Project; ui: UI; onOpen: (i
   if (images.length === 0) return null
   return (
     <div className="cv-gallery mt-5" aria-label={`${ui.projects.gallery}: ${project.name}`}>
-      <div className={`grid gap-2 ${images.length === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
+      <div
+        className={`-mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0 ${
+          images.length === 1 ? "sm:grid-cols-1" : "sm:grid-cols-2"
+        }`}
+      >
         {images.map((img, i) => (
           <button
             key={img.file}
             onClick={() => onOpen(i)}
-            className={`group/img relative overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] ${
-              images.length === 3 && i === 0 ? "col-span-2" : ""
-            }`}
+            className={`group/img relative w-[85%] shrink-0 snap-center overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] sm:w-auto ${
+              images.length === 1 ? "w-full" : ""
+            } ${images.length === 3 && i === 0 ? "sm:col-span-2" : ""}`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
             <img
@@ -123,6 +127,7 @@ function CompactCard({ project, ui }: { project: Project; ui: UI }) {
 
 function LightboxDialog({ state, ui, onClose, onMove }: { state: Lightbox; ui: UI; onClose: () => void; onMove: (d: number) => void }) {
   const ref = useRef<HTMLDialogElement>(null)
+  const touchX = useRef(0)
   const images = state.project.images ?? []
   const img = images[state.index]
 
@@ -145,20 +150,26 @@ function LightboxDialog({ state, ui, onClose, onMove }: { state: Lightbox; ui: U
       ref={ref}
       onClose={onClose}
       onClick={(e) => e.target === e.currentTarget && onClose()}
-      className="m-auto max-h-[92vh] w-[min(1200px,94vw)] rounded-2xl border border-white/15 bg-neutral-950 p-0 text-white backdrop:bg-black/80 backdrop:backdrop-blur-sm"
+      onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+      onTouchEnd={(e) => {
+        const dx = e.changedTouches[0].clientX - touchX.current
+        if (Math.abs(dx) > 50) onMove(dx < 0 ? 1 : -1)
+      }}
+      className="m-auto h-dvh max-h-dvh w-screen max-w-none border-0 bg-neutral-950 p-0 text-white backdrop:bg-black/80 backdrop:backdrop-blur-sm sm:h-auto sm:max-h-[92vh] sm:w-[min(1200px,94vw)] sm:rounded-2xl sm:border sm:border-white/15"
     >
-      <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3">
-        <p className="truncate text-sm text-white/80">
-          {state.project.name} · <span className="text-white/50">{img.alt}</span>
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+        <p className="min-w-0 truncate text-sm text-white/80">
+          {state.project.name}
+          <span className="hidden text-white/50 sm:inline"> · {img.alt}</span>
         </p>
         <div className="flex shrink-0 items-center gap-2 text-sm">
           <span className="font-mono text-xs text-white/45">
             {state.index + 1} / {images.length}
           </span>
-          <button onClick={() => onMove(-1)} aria-label={ui.projects.prev} className="rounded-full px-2 py-1 hover:bg-white/10">
+          <button onClick={() => onMove(-1)} aria-label={ui.projects.prev} className="hidden rounded-full px-2 py-1 hover:bg-white/10 sm:block">
             ←
           </button>
-          <button onClick={() => onMove(1)} aria-label={ui.projects.next} className="rounded-full px-2 py-1 hover:bg-white/10">
+          <button onClick={() => onMove(1)} aria-label={ui.projects.next} className="hidden rounded-full px-2 py-1 hover:bg-white/10 sm:block">
             →
           </button>
           <button onClick={onClose} className="rounded-full px-3 py-1 hover:bg-white/10">
@@ -167,7 +178,12 @@ function LightboxDialog({ state, ui, onClose, onMove }: { state: Lightbox; ui: U
         </div>
       </div>
       {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
-      <img src={imageSrc(state.project, img.file)} alt={img.alt} className="max-h-[80vh] w-full object-contain" />
+      <img
+        src={imageSrc(state.project, img.file)}
+        alt={img.alt}
+        className="h-[calc(100dvh-110px)] w-full object-contain sm:h-auto sm:max-h-[80vh]"
+      />
+      <p className="px-4 py-3 text-center text-xs text-white/55 sm:hidden">{img.alt}</p>
     </dialog>
   )
 }
@@ -192,14 +208,14 @@ export function Projects({ projects, others, ui }: { projects: Project[]; others
 
   return (
     <>
-      <div role="radiogroup" aria-label={p.filterLabel} className="cv-no-print flex flex-wrap gap-2">
+      <div role="radiogroup" aria-label={p.filterLabel} className="cv-no-print -mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0">
         {(["all", ...AREAS] as const).map((a) => (
           <button
             key={a}
             role="radio"
             aria-checked={area === a}
             onClick={() => setArea(a)}
-            className={`rounded-full border px-3.5 py-1.5 text-sm transition ${
+            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-sm transition ${
               area === a
                 ? "border-[var(--glow)] bg-[var(--glow)] font-medium text-black"
                 : "border-white/15 text-white/70 hover:border-white/40 hover:text-white"

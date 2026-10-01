@@ -33,15 +33,15 @@ export function Hero({ profile, ui }: { profile: CV["profile"]; ui: CV["ui"] }) 
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-white/70 sm:text-sm">
           {profile.location}
         </p>
-        <h1 className="text-5xl font-semibold tracking-tighter text-white sm:text-7xl md:text-8xl">
+        <h1 className="text-[2.75rem] leading-[1.05] font-semibold tracking-tighter text-white sm:text-7xl md:text-8xl">
           {profile.name}
         </h1>
         <p className="text-lg font-medium text-white/90 sm:text-xl">{profile.title}</p>
         <p className="max-w-2xl text-base text-white/70 sm:text-lg">{profile.tagline}</p>
-        <div className="pointer-events-auto mt-2 flex flex-wrap items-center justify-center gap-3">
+        <div className="pointer-events-auto mt-2 grid w-full max-w-xs grid-cols-2 gap-3 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center">
           <a
             href="#proyectos"
-            className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/85"
+            className="col-span-2 rounded-full bg-white px-5 py-3 text-center text-sm font-semibold text-black transition hover:bg-white/85 sm:py-2.5"
           >
             {ui.hero.seeProjects}
           </a>
@@ -49,14 +49,14 @@ export function Hero({ profile, ui }: { profile: CV["profile"]; ui: CV["ui"] }) 
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-white/30 bg-black/30 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition hover:border-white/60"
+            className="rounded-full border border-white/30 bg-black/30 px-4 py-3 text-center text-sm sm:px-5 sm:py-2.5 font-semibold text-white backdrop-blur transition hover:border-white/60"
           >
             GitHub
           </a>
           <a
             href={profile.pdf}
             download
-            className="rounded-full border border-white/30 bg-black/30 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition hover:border-white/60"
+            className="rounded-full border border-white/30 bg-black/30 px-4 py-3 text-center text-sm sm:px-5 sm:py-2.5 font-semibold text-white backdrop-blur transition hover:border-white/60"
           >
             {ui.hero.downloadPdf}
           </a>
