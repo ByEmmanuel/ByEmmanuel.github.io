@@ -128,3 +128,50 @@
     @apply font-sans;
   }
 }
+/* --- Preferencias de vista (ver src/lib/prefs.ts) --- */
+html[data-images="off"] .cv-gallery {
+  display: none;
+}
+html[data-detail="brief"] .cv-detail {
+  display: none;
+}
+
+/* --- Impresión: CV limpio en blanco y negro --- */
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  html,
+  body,
+  body * {
+    background: transparent !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+  .cv-hero canvas,
+  .cv-hero > div:not(.z-10),
+  .cv-hero .pointer-events-auto,
+  .cv-no-print,
+  .cv-gallery {
+    display: none !important;
+  }
+  .cv-hero {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .cv-hero > .z-10 {
+    position: static !important;
+    padding: 0 0 8mm;
+  }
+  .cv-section {
+    padding-top: 6mm !important;
+    padding-bottom: 6mm !important;
+  }
+  .cv-card,
+  li {
+    break-inside: avoid;
+    border-color: #ccc !important;
+  }
+}

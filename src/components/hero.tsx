@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react"
 import { ShaderAnimation } from "@/components/ui/shader-animation"
-import { profile } from "@/data/cv"
+import type { CV } from "@/data/cv"
 import { CALM_SPEED, ICE } from "@/lib/presets"
 
 function subscribeReducedMotion(onChange: () => void) {
@@ -11,7 +11,7 @@ function subscribeReducedMotion(onChange: () => void) {
   return () => query.removeEventListener("change", onChange)
 }
 
-export function Hero() {
+export function Hero({ profile, ui }: { profile: CV["profile"]; ui: CV["ui"] }) {
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -19,7 +19,7 @@ export function Hero() {
   )
 
   return (
-    <header className="relative h-svh min-h-[560px] w-full overflow-hidden bg-black">
+    <header className="cv-hero relative h-svh min-h-[560px] w-full overflow-hidden bg-black">
       <ShaderAnimation
         className="absolute inset-0 h-full w-full"
         speed={reducedMotion ? 0 : CALM_SPEED}
@@ -43,7 +43,7 @@ export function Hero() {
             href="#proyectos"
             className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/85"
           >
-            Ver proyectos
+            {ui.hero.seeProjects}
           </a>
           <a
             href={profile.github}
@@ -58,7 +58,7 @@ export function Hero() {
             download
             className="rounded-full border border-white/30 bg-black/30 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur transition hover:border-white/60"
           >
-            Descargar PDF
+            {ui.hero.downloadPdf}
           </a>
         </div>
       </div>

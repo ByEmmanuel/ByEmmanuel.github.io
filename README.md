@@ -13,7 +13,23 @@ npm run build && npm start
 
 ## Editar el contenido
 
-Todo el texto del CV está en `src/data/cv.ts` (perfil, stack, proyectos, certificaciones…).
+Todo el texto del CV está en `src/data/cv.ts`, en español e inglés (`{ es, en }`).
+`/` es la versión en español y `/en/` la versión en inglés.
+
+## Galerías de proyectos
+
+Cada proyecto puede tener de 1 a 4 capturas en `public/proyectos/<slug>/` y listarlas
+en el campo `images` del proyecto en `cv.ts`. Para convertir una captura:
+
+```bash
+magick captura.png -strip -quality 78 public/proyectos/<slug>/1.webp
+```
+
+## Barra superior
+
+Siempre visible, con navegación por secciones, **Imágenes Sí/No**, **Detalle Completo/Breve**
+e idioma **ES/EN**. Las preferencias se guardan en el navegador (`src/lib/prefs.ts`).
+La página también tiene estilos de impresión (Ctrl+P genera un CV limpio en blanco).
 
 ## Fondo
 
