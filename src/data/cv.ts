@@ -32,7 +32,7 @@ const profileSrc = {
     en: "Backend, full-stack and Machine Learning. I build complete systems, from the database to the interface, and work with AI agents every day.",
   },
   location: same("Guadalajara, Jalisco, MX"),
-  email: "emmanuel.1098@alumnos.udg.mx",
+  email: "emmanuel.garcia1098@alumnos.udg.mx",
   phone: "(+52) 33-3060-9463",
   phoneHref: "tel:+523330609463",
   github: "https://github.com/ByEmmanuel",
