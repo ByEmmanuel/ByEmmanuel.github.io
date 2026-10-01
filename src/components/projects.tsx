@@ -16,6 +16,8 @@ export function Chip({ children }: { children: ReactNode }) {
   )
 }
 
+const hasImages = (p: Project) => (p.images?.length ?? 0) > 0
+
 function imageSrc(project: Project, file: string) {
   return `/proyectos/${project.slug}/${file}`
 }
@@ -48,6 +50,34 @@ function Gallery({ project, ui, onOpen }: { project: Project; ui: UI; onOpen: (i
   )
 }
 
+function Highlights({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-4 space-y-2 text-sm text-white/65">
+      {items.map((h) => (
+        <li key={h} className="flex gap-2">
+          <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--glow)]" />
+          <span>{h}</span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function Links({ project }: { project: Project }) {
+  if (!project.links?.length && !project.note) return null
+  return (
+    <div className="mt-auto flex flex-wrap gap-4 pt-5 text-sm">
+      {project.links?.map((l) => (
+        <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="font-medium text-[var(--glow)] hover:underline">
+          {l.label} →
+        </a>
+      ))}
+      {project.note && <span className="text-white/40">{project.note}</span>}
+    </div>
+  )
+}
+
+// Proyecto con capturas: tarjeta grande con galería.
 function ProjectCard({ project, ui, onOpen }: { project: Project; ui: UI; onOpen: (index: number) => void }) {
   return (
     <article className="cv-card flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-[var(--glow)]/50 hover:bg-white/[0.05]">
@@ -56,30 +86,37 @@ function ProjectCard({ project, ui, onOpen }: { project: Project; ui: UI; onOpen
         <span className="font-mono text-xs text-white/50">{project.period}</span>
       </div>
       <p className="mt-3 text-sm leading-relaxed text-white/70">{project.summary}</p>
-      <ul className="cv-detail mt-4 space-y-2 text-sm text-white/65">
-        {project.highlights.map((h) => (
-          <li key={h} className="flex gap-2">
-            <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[var(--glow)]" />
-            <span>{h}</span>
-          </li>
-        ))}
-      </ul>
+      <div className="cv-detail">
+        <Highlights items={project.highlights} />
+      </div>
       <Gallery project={project} ui={ui} onOpen={onOpen} />
       <div className="mt-5 flex flex-wrap gap-1.5">
         {project.stack.map((s) => (
           <Chip key={s}>{s}</Chip>
         ))}
       </div>
-      {(project.links?.length || project.note) && (
-        <div className="mt-auto flex flex-wrap gap-4 pt-5 text-sm">
-          {project.links?.map((l) => (
-            <a key={l.href} href={l.href} target="_blank" rel="noreferrer" className="font-medium text-[var(--glow)] hover:underline">
-              {l.label} →
-            </a>
-          ))}
-          {project.note && <span className="text-white/40">{project.note}</span>}
-        </div>
-      )}
+      <Links project={project} />
+    </article>
+  )
+}
+
+// Proyecto sin capturas: tarjeta compacta con los detalles plegados.
+function CompactCard({ project, ui }: { project: Project; ui: UI }) {
+  return (
+    <article className="cv-card flex flex-col rounded-xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-[var(--glow)]/40">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <h3 className="font-semibold text-white">{project.name}</h3>
+        <span className="font-mono text-[11px] text-white/45">{project.period}</span>
+      </div>
+      <p className="mt-2 text-sm leading-relaxed text-white/65">{project.summary}</p>
+      <details className="cv-detail group/d mt-3 text-sm">
+        <summary className="cursor-pointer list-none text-xs font-medium text-white/50 hover:text-white [&::-webkit-details-marker]:hidden">
+          <span className="inline-block transition group-open/d:rotate-90">▸</span> {ui.projects.showDetails}
+        </summary>
+        <Highlights items={project.highlights} />
+      </details>
+      <p className="mt-4 font-mono text-xs leading-relaxed text-white/45">{project.stack.join(" · ")}</p>
+      <Links project={project} />
     </article>
   )
 }
@@ -181,11 +218,22 @@ export function Projects({ projects, others, ui }: { projects: Project[]; others
             <div key={g.title} className="mt-12 first-of-type:mt-10">
               <h3 className="text-xl font-semibold text-white">{g.title}</h3>
               <p className="mt-2 max-w-3xl text-white/60">{g.text}</p>
-              <div className="mt-8 grid gap-5 md:grid-cols-2">
-                {g.items.map((pr) => (
-                  <ProjectCard key={pr.slug} project={pr} ui={ui} onOpen={(index) => setLightbox({ project: pr, index })} />
-                ))}
-              </div>
+              {g.items.some(hasImages) && (
+                <div className="mt-8 grid gap-5 md:grid-cols-2">
+                  {g.items.filter(hasImages).map((pr) => (
+                    <ProjectCard key={pr.slug} project={pr} ui={ui} onOpen={(index) => setLightbox({ project: pr, index })} />
+                  ))}
+                </div>
+              )}
+              {g.items.some((pr) => !hasImages(pr)) && (
+                <div className="mt-5 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {g.items
+                    .filter((pr) => !hasImages(pr))
+                    .map((pr) => (
+                      <CompactCard key={pr.slug} project={pr} ui={ui} />
+                    ))}
+                </div>
+              )}
             </div>
           ),
       )}

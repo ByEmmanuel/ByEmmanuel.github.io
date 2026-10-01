@@ -670,6 +670,7 @@ const uiSrc = {
     empty: { es: "Ningún proyecto coincide con este filtro.", en: "No projects match this filter." },
     gallery: { es: "Galería", en: "Gallery" },
     close: { es: "Cerrar", en: "Close" },
+    showDetails: { es: "Ver detalles", en: "Show details" },
     prev: { es: "Anterior", en: "Previous" },
     next: { es: "Siguiente", en: "Next" },
   },
