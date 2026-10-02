@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Proyectos en curso: contenido local, no se publica en git
+/proyectos.txt
+/proyectos.en.txt

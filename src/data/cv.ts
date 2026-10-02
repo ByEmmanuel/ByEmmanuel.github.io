@@ -210,6 +210,11 @@ const projectsSrc: ProjectSrc[] = [
         en: "Safe deletion: downloads the original to an external SSD, verifies it and only then deletes it",
       },
     ],
+    images: [
+      { file: "1.webp", alt: { es: "Revisión de fotos estilo Tinder (fotos difuminadas)", en: "Tinder-style photo review (photos blurred)" } },
+      { file: "2.webp", alt: { es: "Galería con filtros y miniaturas (fotos difuminadas)", en: "Gallery with filters and thumbnails (photos blurred)" } },
+      { file: "3.webp", alt: { es: "Estadísticas de espacio y categorías detectadas por el modelo", en: "Storage statistics and model-detected categories" } },
+    ],
     stack: ["Python", "FastAPI", "SQLite", "Next.js", "shadcn/ui", "Tailwind"],
   },
   {
@@ -627,6 +632,7 @@ const uiSrc = {
     about: { es: "Sobre mí", en: "About" },
     stack: same("Stack"),
     projects: { es: "Proyectos", en: "Projects" },
+    wip: { es: "En desarrollo", en: "In progress" },
     timeline: { es: "Trayectoria", en: "Timeline" },
     ai: { es: "IA", en: "AI" },
     icpc: same("ICPC"),
@@ -652,6 +658,7 @@ const uiSrc = {
     softSkills: { es: "Habilidades", en: "Soft skills" },
     stack: { kicker: { es: "02 · Skills técnicas", en: "02 · Technical skills" }, title: same("Stack") },
     projects: { kicker: { es: "03 · Proyectos", en: "03 · Projects" }, title: { es: "Proyectos y experiencia", en: "Projects and experience" } },
+    wip: { kicker: { es: "Ahora mismo", en: "Right now" }, title: { es: "Proyectos en los que estoy trabajando", en: "Projects I'm working on" } },
     timeline: { kicker: { es: "04 · Trayectoria", en: "04 · Timeline" }, title: { es: "Trayectoria", en: "Journey so far" } },
     ai: { kicker: { es: "05 · Especialización", en: "05 · Specialization" }, title: { es: "IA y automatización", en: "AI and automation" } },
     icpc: { kicker: { es: "06 · Programación competitiva", en: "06 · Competitive programming" }, title: same("ICPC") },

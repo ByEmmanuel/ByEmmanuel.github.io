@@ -2,8 +2,10 @@ import type { CSSProperties, ReactNode } from "react"
 import { Hero } from "@/components/hero"
 import { Chip, Projects } from "@/components/projects"
 import { TopBar } from "@/components/top-bar"
+import { WipProjects } from "@/components/wip-projects"
 import { localize, type Lang } from "@/data/cv"
 import { ICE } from "@/lib/presets"
+import { loadWipProjects } from "@/lib/wip"
 
 function Section({ id, title, kicker, children }: { id: string; title: string; kicker: string; children: ReactNode }) {
   return (
@@ -19,13 +21,20 @@ export function CVPage({ lang }: { lang: Lang }) {
   const cv = localize(lang)
   const { profile, ui } = cv
   const s = ui.sections
+  const wip = loadWipProjects(lang)
 
   return (
     <div style={{ "--glow": ICE.accent } as CSSProperties} className="bg-black text-white">
       <Hero profile={profile} ui={ui} />
-      <TopBar lang={lang} ui={ui} />
+      <TopBar lang={lang} ui={ui} showWip={wip.length > 0} />
 
       <main>
+        {wip.length > 0 && (
+          <Section id="en-desarrollo" kicker={s.wip.kicker} title={s.wip.title}>
+            <WipProjects items={wip} />
+          </Section>
+        )}
+
         <Section id="sobre-mi" kicker={s.about.kicker} title={s.about.title}>
           <div className="grid gap-10 md:grid-cols-[2fr_1fr]">
             <div className="space-y-4 text-base leading-relaxed text-white/75 sm:text-lg">
@@ -140,7 +149,7 @@ export function CVPage({ lang }: { lang: Lang }) {
               { label: ui.contact.github, value: "github.com/ByEmmanuel", href: profile.github },
               { label: ui.contact.location, value: profile.location },
             ].map((c) => (
-              <div key={c.label} className="cv-card rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <div key={c.label} className="cv-card min-w-0 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
                 <p className="text-xs uppercase tracking-wider text-white/45">{c.label}</p>
                 {c.href ? (
                   <a href={c.href} className="mt-2 block break-words font-medium text-white hover:text-[var(--glow)]">
