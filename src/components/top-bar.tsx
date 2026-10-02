@@ -9,15 +9,17 @@ function Toggle<T extends string>({
   value,
   options,
   onChange,
+  stacked = false,
 }: {
   label: string
   value: T
   options: { value: T; label: string }[]
   onChange: (v: T) => void
+  stacked?: boolean
 }) {
   return (
-    <div role="radiogroup" aria-label={label} className="flex items-center gap-1.5">
-      <span className="text-xs text-white/45">{label}</span>
+    <div role="radiogroup" aria-label={label} className={`flex items-center gap-1.5 ${stacked ? "justify-between" : ""}`}>
+      <span className={stacked ? "text-[15px] text-white/80" : "text-xs text-white/45"}>{label}</span>
       <div className="flex rounded-full border border-white/15 bg-white/[0.04] p-0.5">
         {options.map((o) => (
           <button
@@ -54,8 +56,9 @@ export function TopBar({ lang, ui }: { lang: Lang; ui: CV["ui"] }) {
     ["contacto", ui.nav.contact],
   ]
 
-  const imagesToggle = (
+  const imagesToggle = (stacked = false) => (
     <Toggle
+      stacked={stacked}
       label={c.images}
       value={images}
       options={[
@@ -65,8 +68,9 @@ export function TopBar({ lang, ui }: { lang: Lang; ui: CV["ui"] }) {
       onChange={(v) => setPref("images", v)}
     />
   )
-  const detailToggle = (
+  const detailToggle = (stacked = false) => (
     <Toggle
+      stacked={stacked}
       label={c.detail}
       value={detail}
       options={[
@@ -106,8 +110,8 @@ export function TopBar({ lang, ui }: { lang: Lang; ui: CV["ui"] }) {
           ))}
         </div>
         <div className="flex shrink-0 items-center gap-3">
-          {imagesToggle}
-          {detailToggle}
+          {imagesToggle()}
+          {detailToggle()}
           {langSwitch}
         </div>
       </div>
@@ -140,9 +144,9 @@ export function TopBar({ lang, ui }: { lang: Lang; ui: CV["ui"] }) {
                 </a>
               ))}
             </div>
-            <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/10 pt-3">
-              {imagesToggle}
-              {detailToggle}
+            <div className="mt-3 flex flex-col gap-3 border-t border-white/10 px-3 pt-4">
+              {imagesToggle(true)}
+              {detailToggle(true)}
             </div>
           </div>
         )}

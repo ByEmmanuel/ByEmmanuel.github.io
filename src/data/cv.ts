@@ -26,11 +26,16 @@ const code: L = { es: "Código", en: "Code" }
 
 const profileSrc = {
   name: "Jesús Emmanuel García",
-  title: { es: "Ingeniero en Computación · Ingeniero de Software", en: "Computer Engineer · Software Engineer" },
+  title: { es: "Ingeniero en Computación · Machine Learning y Backend", en: "Computer Engineer · Machine Learning & Backend" },
   tagline: {
-    es: "Backend, full-stack y Machine Learning. Construyo sistemas completos, de la base de datos a la interfaz, y trabajo a diario con agentes de IA.",
-    en: "Backend, full-stack and Machine Learning. I build complete systems, from the database to the interface, and work with AI agents every day.",
+    es: "Me especializo en Machine Learning: modelos predictivos con gradient boosting y estadística bayesiana, simulación Monte Carlo y despliegue local de LLMs, llevados a producto con APIs en FastAPI y Spring Boot.",
+    en: "I specialize in Machine Learning: predictive models with gradient boosting and Bayesian statistics, Monte Carlo simulation and local LLM deployment, shipped as products with FastAPI and Spring Boot APIs.",
   },
+  highlights: [
+    { es: "ML aplicado · XGBoost, PyMC, Optuna", en: "Applied ML · XGBoost, PyMC, Optuna" },
+    { es: "Investigación · Mamba y VAPO", en: "Research · Mamba and VAPO" },
+    { es: "3 años de Java · ICPC 2025 y 2026", en: "3 years of Java · ICPC 2025 & 2026" },
+  ] as L[],
   location: same("Guadalajara, Jalisco, MX"),
   email: "emmanuel.garcia1098@alumnos.udg.mx",
   phone: "(+52) 33-3060-9463",
@@ -55,10 +60,10 @@ const aboutSrc: L[] = [
 ]
 
 const skillsSrc: { group: L; items: string[] }[] = [
-  { group: { es: "Lenguajes", en: "Languages" }, items: ["Java", "Python", "TypeScript", "JavaScript", "C++", "C", "SQL", "Zsh / Bash"] },
-  { group: same("Backend"), items: ["Spring Boot", "Hibernate / JPA", "JPQL", "FastAPI", "Flask", "REST APIs", "WebSockets"] },
-  { group: { es: "Frontend y móvil", en: "Frontend & mobile" }, items: ["React", "React Native", "Next.js", "Vite", "Tailwind CSS", "shadcn/ui", "JavaFX", "HTML / CSS"] },
-  { group: { es: "Bases de datos", en: "Databases" }, items: ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "SQLite", "Prisma", "SQLAlchemy"] },
+  { group: { es: "Lenguajes", en: "Languages" }, items: ["Java", "Python", "JavaScript", "C++", "C", "SQL", "Zsh / Bash"] },
+  { group: same("Backend"), items: ["Spring Boot", "Hibernate / JPA", "JPQL", "FastAPI", "REST APIs", "WebSockets"] },
+  { group: { es: "Frontend y móvil", en: "Frontend & mobile" }, items: ["React", "React Native", "Next.js", "Vite", "Tailwind CSS", "JavaFX", "HTML / CSS"] },
+  { group: { es: "Bases de datos", en: "Databases" }, items: ["PostgreSQL", "MySQL", "MariaDB", "MongoDB", "SQLite", "Prisma"] },
   { group: same("Machine Learning"), items: ["scikit-learn", "XGBoost", "LightGBM", "CatBoost", "PyMC", "Optuna", "pandas / NumPy", "SciPy"] },
   { group: { es: "IA y automatización", en: "AI & automation" }, items: ["Claude Code", "Anthropic API", "MCP", "LM Studio", "Qwen / Gemma", "Docling", "n8n", "Zapier"] },
   { group: { es: "Infraestructura", en: "Infrastructure" }, items: ["Docker", "Docker Compose", "NGINX", "Linux (Arch)", "systemd", "Git / GitHub"] },
@@ -629,9 +634,9 @@ const uiSrc = {
     contact: { es: "Contacto", en: "Contact" },
   },
   controls: {
-    images: { es: "Imágenes", en: "Images" },
-    yes: { es: "Sí", en: "On" },
-    no: { es: "No", en: "Off" },
+    images: { es: "Mostrar imágenes", en: "Show images" },
+    yes: { es: "Sí", en: "Yes" },
+    no: { es: "No", en: "No" },
     detail: { es: "Detalle", en: "Detail" },
     brief: { es: "Breve", en: "Brief" },
     full: { es: "Completo", en: "Full" },
@@ -658,10 +663,10 @@ const uiSrc = {
     contact: { kicker: { es: "08 · Contacto", en: "08 · Contact" }, title: { es: "Hablemos", en: "Let's talk" } },
   },
   projects: {
-    iaTitle: { es: "Construidos con agentes de IA", en: "Built with AI agents" },
+    iaTitle: { es: "Proyectos impulsados con herramientas de IA de Anthropic", en: "Projects powered by Anthropic's AI tools" },
     iaText: {
-      es: "Proyectos donde uso agentes de IA (Claude Code) durante todo el desarrollo: diseño de arquitectura, esquemas de base de datos e integración de APIs externas, para resolver problemas reales.",
-      en: "Projects where I use AI agents (Claude Code) throughout development: architecture design, database schemas and external API integration, to solve real problems.",
+      es: "Proyectos donde yo defino la arquitectura, los esquemas de base de datos y las integraciones, y me apoyo en Claude Code (Anthropic) para acelerar el desarrollo. Las decisiones técnicas y la revisión del código son mías.",
+      en: "Projects where I define the architecture, database schemas and integrations, and use Claude Code (Anthropic) to speed up development. The technical decisions and code review are mine.",
     },
     ownTitle: { es: "Proyectos propios", en: "Personal projects" },
     ownText: { es: "Desarrollados de forma tradicional, de principio a fin.", en: "Built the traditional way, end to end." },
@@ -691,8 +696,8 @@ const uiSrc = {
   meta: {
     title: { es: "Jesús Emmanuel García · CV", en: "Jesús Emmanuel García · Resume" },
     description: {
-      es: "Ingeniero en Computación e Ingeniero de Software en Guadalajara. Backend, full-stack, Machine Learning y desarrollo con agentes de IA.",
-      en: "Computer and Software Engineer in Guadalajara, Mexico. Backend, full-stack, Machine Learning and development with AI agents.",
+      es: "Ingeniero en Computación en Guadalajara, especializado en Machine Learning: modelos predictivos, simulación Monte Carlo y LLMs locales, con experiencia en backend (Java, Spring Boot, FastAPI).",
+      en: "Computer Engineer in Guadalajara, Mexico, specializing in Machine Learning: predictive models, Monte Carlo simulation and local LLMs, with backend experience (Java, Spring Boot, FastAPI).",
     },
   },
 }

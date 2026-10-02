@@ -37,7 +37,14 @@ export function Hero({ profile, ui }: { profile: CV["profile"]; ui: CV["ui"] }) 
           {profile.name}
         </h1>
         <p className="text-lg font-medium text-white/90 sm:text-xl">{profile.title}</p>
-        <p className="max-w-2xl text-base text-white/70 sm:text-lg">{profile.tagline}</p>
+        <p className="max-w-2xl text-base text-white/75 sm:text-lg">{profile.tagline}</p>
+        <ul className="flex max-w-3xl flex-wrap justify-center gap-2">
+          {profile.highlights.map((h) => (
+            <li key={h} className="rounded-full border border-white/20 bg-black/35 px-3 py-1 text-xs text-white/85 backdrop-blur sm:text-sm">
+              {h}
+            </li>
+          ))}
+        </ul>
         <div className="pointer-events-auto mt-2 grid w-full max-w-xs grid-cols-2 gap-3 sm:flex sm:max-w-none sm:flex-wrap sm:items-center sm:justify-center">
           <a
             href="#proyectos"

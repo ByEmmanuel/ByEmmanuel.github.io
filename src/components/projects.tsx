@@ -29,26 +29,35 @@ function Gallery({ project, ui, onOpen }: { project: Project; ui: UI; onOpen: (i
     <div className="cv-gallery mt-5" aria-label={`${ui.projects.gallery}: ${project.name}`}>
       <div
         className={`-mx-6 flex snap-x snap-mandatory gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:overflow-visible sm:px-0 sm:pb-0 ${
-          images.length === 1 ? "sm:grid-cols-1" : "sm:grid-cols-2"
+          images.length === 1 ? "sm:max-w-sm sm:grid-cols-1" : images.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"
         }`}
       >
-        {images.map((img, i) => (
-          <button
-            key={img.file}
-            onClick={() => onOpen(i)}
-            className={`group/img relative w-[85%] shrink-0 snap-center overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] sm:w-auto ${
-              images.length === 1 ? "w-full" : ""
-            } ${images.length === 3 && i === 0 ? "sm:col-span-2" : ""}`}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
-            <img
-              src={imageSrc(project, img.file)}
-              alt={img.alt}
-              loading="lazy"
-              className="aspect-[16/10] w-full object-cover object-top transition duration-300 group-hover/img:scale-[1.03]"
-            />
-          </button>
-        ))}
+        {images.map((img, i) => {
+          const cols = images.length === 3 ? 3 : images.length === 1 ? 1 : 2
+          const col = i % cols
+          const row = Math.floor(i / cols)
+          const x = col === 0 ? "left" : col === cols - 1 ? "right" : "center"
+          const y = row === 0 ? "top" : "bottom"
+          return (
+            <button
+              key={img.file}
+              onClick={() => onOpen(i)}
+              aria-label={`${ui.projects.gallery}: ${img.alt}`}
+              style={{ transformOrigin: `${x} ${y}` }}
+              className={`relative w-[85%] shrink-0 cursor-zoom-in snap-center overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] transition duration-200 sm:w-auto sm:hover:z-20 sm:hover:scale-[1.6] sm:hover:border-white/30 sm:hover:shadow-2xl sm:hover:shadow-black ${
+                images.length === 1 ? "w-full" : ""
+              }`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
+              <img
+                src={imageSrc(project, img.file)}
+                alt={img.alt}
+                loading="lazy"
+                className="aspect-[16/10] w-full object-cover object-top sm:aspect-video"
+              />
+            </button>
+          )
+        })}
       </div>
     </div>
   )
@@ -105,7 +114,7 @@ function ProjectCard({ project, ui, onOpen }: { project: Project; ui: UI; onOpen
 }
 
 // Proyecto sin capturas: tarjeta compacta con los detalles plegados.
-function CompactCard({ project, ui }: { project: Project; ui: UI }) {
+function CompactCard({ project, ui, open = false }: { project: Project; ui: UI; open?: boolean }) {
   return (
     <article className="cv-card flex flex-col rounded-xl border border-white/10 bg-white/[0.02] p-5 transition hover:border-[var(--glow)]/40">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -113,7 +122,7 @@ function CompactCard({ project, ui }: { project: Project; ui: UI }) {
         <span className="font-mono text-[11px] text-white/45">{project.period}</span>
       </div>
       <p className="mt-2 text-sm leading-relaxed text-white/65">{project.summary}</p>
-      <details className="cv-detail group/d mt-3 text-sm">
+      <details open={open} className="cv-detail group/d mt-3 text-sm">
         <summary className="cursor-pointer list-none text-xs font-medium text-white/50 hover:text-white [&::-webkit-details-marker]:hidden">
           <span className="inline-block transition group-open/d:rotate-90">▸</span> {ui.projects.showDetails}
         </summary>
@@ -166,25 +175,109 @@ function LightboxDialog({ state, ui, onClose, onMove }: { state: Lightbox; ui: U
           <span className="font-mono text-xs text-white/45">
             {state.index + 1} / {images.length}
           </span>
-          <button onClick={() => onMove(-1)} aria-label={ui.projects.prev} className="hidden rounded-full px-2 py-1 hover:bg-white/10 sm:block">
-            ←
-          </button>
-          <button onClick={() => onMove(1)} aria-label={ui.projects.next} className="hidden rounded-full px-2 py-1 hover:bg-white/10 sm:block">
-            →
-          </button>
           <button onClick={onClose} className="rounded-full px-3 py-1 hover:bg-white/10">
             {ui.projects.close} ✕
           </button>
         </div>
       </div>
-      {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
-      <img
-        src={imageSrc(state.project, img.file)}
-        alt={img.alt}
-        className="h-[calc(100dvh-110px)] w-full object-contain sm:h-auto sm:max-h-[80vh]"
-      />
-      <p className="px-4 py-3 text-center text-xs text-white/55 sm:hidden">{img.alt}</p>
+      <div className="relative flex h-[calc(100dvh-170px)] items-center justify-center bg-black sm:h-[72vh]">
+        {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
+        <img
+          key={img.file}
+          src={imageSrc(state.project, img.file)}
+          alt={img.alt}
+          className="max-h-full max-w-full object-contain"
+        />
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={() => onMove(-1)}
+              aria-label={ui.projects.prev}
+              className="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-xl backdrop-blur transition hover:bg-white/20 sm:left-4"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => onMove(1)}
+              aria-label={ui.projects.next}
+              className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/60 text-xl backdrop-blur transition hover:bg-white/20 sm:right-4"
+            >
+              →
+            </button>
+          </>
+        )}
+      </div>
+      <div className="flex flex-col items-center gap-2 px-4 py-3">
+        {images.length > 1 && (
+          <div className="flex gap-2">
+            {images.map((im, i) => (
+              <button
+                key={im.file}
+                onClick={() => onMove(i - state.index)}
+                aria-label={im.alt}
+                aria-current={i === state.index}
+                className={`h-12 w-20 overflow-hidden rounded-md border transition ${
+                  i === state.index ? "border-[var(--glow)] opacity-100" : "border-white/15 opacity-50 hover:opacity-90"
+                }`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- export estático, sin optimizador */}
+                <img src={imageSrc(state.project, im.file)} alt="" className="h-full w-full object-cover object-top" />
+              </button>
+            ))}
+          </div>
+        )}
+        <p className="text-center text-xs text-white/55 sm:hidden">{img.alt}</p>
+      </div>
     </dialog>
+  )
+}
+
+// Escalera: un proyecto con capturas junto a uno sin capturas, alternando el lado en cada fila,
+// para que las imágenes no acaparen toda la atención. Lo que sobra se acomoda debajo.
+function Ladder({ items, ui, onOpen }: { items: Project[]; ui: UI; onOpen: (project: Project, index: number) => void }) {
+  const withImg = items.filter(hasImages)
+  const plain = items.filter((pr) => !hasImages(pr))
+  const rows = Math.min(withImg.length, plain.length)
+  const restImg = withImg.slice(rows)
+  const restPlain = plain.slice(rows)
+
+  return (
+    <div className="mt-8 space-y-5">
+      {Array.from({ length: rows }, (_, i) => {
+        const big = (
+          <ProjectCard key={withImg[i].slug} project={withImg[i]} ui={ui} onOpen={(index) => onOpen(withImg[i], index)} />
+        )
+        const small = (
+          <div key={plain[i].slug} className="md:self-stretch [&>article]:h-full">
+            <CompactCard project={plain[i]} ui={ui} open />
+          </div>
+        )
+        const bigFirst = i % 2 === 0
+        return (
+          <div
+            key={withImg[i].slug}
+            className={`grid gap-5 ${bigFirst ? "md:grid-cols-[1.1fr_1fr]" : "md:grid-cols-[1fr_1.1fr]"}`}
+          >
+            {bigFirst ? big : small}
+            {bigFirst ? small : big}
+          </div>
+        )
+      })}
+      {restImg.length > 0 && (
+        <div className="grid gap-5 md:grid-cols-2">
+          {restImg.map((pr) => (
+            <ProjectCard key={pr.slug} project={pr} ui={ui} onOpen={(index) => onOpen(pr, index)} />
+          ))}
+        </div>
+      )}
+      {restPlain.length > 0 && (
+        <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {restPlain.map((pr) => (
+            <CompactCard key={pr.slug} project={pr} ui={ui} />
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
 
@@ -234,22 +327,7 @@ export function Projects({ projects, others, ui }: { projects: Project[]; others
             <div key={g.title} className="mt-12 first-of-type:mt-10">
               <h3 className="text-xl font-semibold text-white">{g.title}</h3>
               <p className="mt-2 max-w-3xl text-white/60">{g.text}</p>
-              {g.items.some(hasImages) && (
-                <div className="mt-8 grid gap-5 md:grid-cols-2">
-                  {g.items.filter(hasImages).map((pr) => (
-                    <ProjectCard key={pr.slug} project={pr} ui={ui} onOpen={(index) => setLightbox({ project: pr, index })} />
-                  ))}
-                </div>
-              )}
-              {g.items.some((pr) => !hasImages(pr)) && (
-                <div className="mt-5 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {g.items
-                    .filter((pr) => !hasImages(pr))
-                    .map((pr) => (
-                      <CompactCard key={pr.slug} project={pr} ui={ui} />
-                    ))}
-                </div>
-              )}
+              <Ladder items={g.items} ui={ui} onOpen={(project, index) => setLightbox({ project, index })} />
             </div>
           ),
       )}
